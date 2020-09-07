@@ -10,6 +10,7 @@ import Button from './Button';
 import CenterView from './CenterView';
 import Welcome from './Welcome';
 import FancySelector from './FancySelector';
+import SlugField from './SlugField';
 import Timeline from './Timeline';
 import TaskCard from './TaskCard';
 
@@ -119,6 +120,21 @@ storiesOf('Fancy', module)
     <FancySelector
       items={selectorArray}
       onChange={() => console.log('onChange clicked')} />
+  ))
+  .add('SlugField', () => (
+    <SlugField
+      domainPrefix='www.google.com'
+      domainPrefixItems={[
+        { label: 'www.linkedin.com', value: 'www.linkedin.com' },
+        { label: 'www.google.com', value: 'www.google.com' },
+        { label: 'www.facebook.com', value: 'www.facebook.com' },
+      ]}
+      showPrefixDropdown={true}
+      placeholder='My-slug-name'
+      value=''
+      showCopyButton={true}
+      showLinkIcon={false}
+    />
   ))
   .add('Timeline', () => (
     <Timeline
