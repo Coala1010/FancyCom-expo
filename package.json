@@ -38,9 +38,9 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
     "react-native-dropdown-picker": "^3.6.8",
     "react-native-gesture-handler": "~1.6.0",
+    "react-native-modal-selector": "^2.0.3",
     "react-native-safe-area-context": "~3.0.7",
     "react-native-screens": "~2.9.0",
-    "react-native-simple-toast": "^1.1.2",
     "react-native-web": "~0.11.7"
   },
   "devDependencies": {

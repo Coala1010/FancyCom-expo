@@ -4,6 +4,7 @@ import {
   ToastAndroid,
   Alert,
   Linking,
+  Picker,
   Platform,
   Text,
   TextInput,
@@ -12,6 +13,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
+import ModalSelector from 'react-native-modal-selector';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './style';
 
@@ -42,6 +44,7 @@ export default function SlugField(props: Props) {
 
   const [ slugText, setSlugText ] = useState(value);
   const [ domainPrefixText, setDomainPrefixText ] = useState(domainPrefix);
+  const [ timeText, setTimeText ] = useState('');
 
   const onLinkCopyButton = () => {
     const urlValue = 'http://' + domainPrefixText + '/' + slugText;
@@ -65,7 +68,33 @@ export default function SlugField(props: Props) {
           <Text style={styles.domainPrefixColor}>https://</Text>
         </View>
         <View style={styles.domainPrefixSection}>
-          <DropDownPicker
+          <Picker
+            style={{width: 300, backgroundColor: '#e1e1e1', flex:1}}
+            selectedValue={timeText}
+            onValueChange={itemValue => setTimeText(itemValue)}>
+            <Picker.Item label="1:00" value="1:00" />
+            <Picker.Item label="2:00" value="2:00" />
+            <Picker.Item label="3:00" value="3:00" />
+            <Picker.Item label="4:00" value="4:00" />
+            <Picker.Item label="5:00" value="5:00" />
+            <Picker.Item label="6:00" value="6:00" />
+            <Picker.Item label="7:00" value="7:00" />
+            <Picker.Item label="7:00" value="8:00" />
+            <Picker.Item label="9:00" value="9:00" />
+            <Picker.Item label="10:00" value="10:00" />
+            <Picker.Item label="11:00" value="11:00" />
+            <Picker.Item label="12:00" value="12:00" />
+          </Picker>
+          {/* <ModalSelector
+            data={domainPrefixItems}
+            initValue='www.google.com'
+            style={{
+              backgroundColor: '#F00000',
+              borderWidth: 1,
+              borderColor: 'grey',
+            }}
+            onChange={(option) => alert(`${option.label}`)} /> */}
+          {/* <DropDownPicker
             items={domainPrefixItems}
             defaultValue={domainPrefixText}
             containerStyle={{ height: 40 }}
@@ -83,7 +112,7 @@ export default function SlugField(props: Props) {
             dropDownStyle={{ backgroundColor: 'grey', alignItems: 'flex-start' }}
             arrowColor='white'
             onChangeItem={item => setDomainPrefixText(item.value)}
-          />
+          /> */}
         </View>
         <View style={styles.slashSection}>
           <Text style={styles.domainPrefixColor}>/</Text>

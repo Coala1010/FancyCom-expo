@@ -11,6 +11,7 @@ import CenterView from './CenterView';
 import Welcome from './Welcome';
 import FancySelector from './FancySelector';
 import SlugField from './SlugField';
+import ToolBar from './ToolBar';
 import Timeline from './Timeline';
 import TaskCard from './TaskCard';
 
@@ -125,7 +126,7 @@ storiesOf('Fancy', module)
     <SlugField
       domainPrefix='www.google.com'
       domainPrefixItems={[
-        { label: 'www.linkedin.com', value: 'www.linkedin.com' },
+        { label: 'linkedin', value: 'www.linkedin.com' },
         { label: 'www.google.com', value: 'www.google.com' },
         { label: 'www.facebook.com', value: 'www.facebook.com' },
       ]}
@@ -133,7 +134,12 @@ storiesOf('Fancy', module)
       placeholder='My-slug-name'
       value=''
       showCopyButton={true}
-      showLinkIcon={false}
+      showLinkIcon={true}
+    />
+  ))
+  .add('ToolBar', () => (
+    <ToolBar
+      name='Project Name   >   Object Name'
     />
   ))
   .add('Timeline', () => (
