@@ -68,32 +68,16 @@ export default function SlugField(props: Props) {
           <Text style={styles.domainPrefixColor}>https://</Text>
         </View>
         <View style={styles.domainPrefixSection}>
-          <Picker
-            style={{width: 300, backgroundColor: '#e1e1e1', flex:1}}
-            selectedValue={timeText}
-            onValueChange={itemValue => setTimeText(itemValue)}>
-            <Picker.Item label="1:00" value="1:00" />
-            <Picker.Item label="2:00" value="2:00" />
-            <Picker.Item label="3:00" value="3:00" />
-            <Picker.Item label="4:00" value="4:00" />
-            <Picker.Item label="5:00" value="5:00" />
-            <Picker.Item label="6:00" value="6:00" />
-            <Picker.Item label="7:00" value="7:00" />
-            <Picker.Item label="7:00" value="8:00" />
-            <Picker.Item label="9:00" value="9:00" />
-            <Picker.Item label="10:00" value="10:00" />
-            <Picker.Item label="11:00" value="11:00" />
-            <Picker.Item label="12:00" value="12:00" />
-          </Picker>
-          {/* <ModalSelector
+          <ModalSelector
             data={domainPrefixItems}
             initValue='www.google.com'
             style={{
               backgroundColor: '#F00000',
-              borderWidth: 1,
-              borderColor: 'grey',
+              // borderWidth: 1,
+              // borderColor: 'grey',
+              flexDirection: 'row',
             }}
-            onChange={(option) => alert(`${option.label}`)} /> */}
+            onChange={(option) => alert(`${option.label}`)} />
           {/* <DropDownPicker
             items={domainPrefixItems}
             defaultValue={domainPrefixText}

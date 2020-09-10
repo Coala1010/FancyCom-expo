@@ -10,6 +10,7 @@ import Button from './Button';
 import CenterView from './CenterView';
 import Welcome from './Welcome';
 import FancySelector from './FancySelector';
+import FlexTabs from './FlexTabs';
 import SlugField from './SlugField';
 import ToolBar from './ToolBar';
 import Timeline from './Timeline';
@@ -121,6 +122,26 @@ storiesOf('Fancy', module)
     <FancySelector
       items={selectorArray}
       onChange={() => console.log('onChange clicked')} />
+  ))
+  .add('FlexTabs', () => (
+    <FlexTabs
+      name='flextab'
+      tabs={[
+        { id: 1, name: 'Builder' },
+        { id: 2, name: 'Calendar' },
+        { id: 3, name: 'Insights' },
+      ]}
+      enableTabDropdowns={true}
+      tabActions={[
+        { label: 'Rename', onSelect: () => alert('onSelect clicked') },
+        { label: 'Copy', onSelect: () => console.log('onSelect clicked') },
+        { label: 'Duplicate', onSelect: () => console.log('onSelect clicked') },
+        { label: 'Delete', onSelect: () => console.log('onSelect clicked') },
+      ]}
+      canRename={true}
+      canAdd={true}
+      canDrag={false}
+      style={{ marginTop: 0 }} />
   ))
   .add('SlugField', () => (
     <SlugField
