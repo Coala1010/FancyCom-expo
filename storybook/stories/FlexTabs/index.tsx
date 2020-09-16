@@ -12,7 +12,7 @@ import {
   FlatList,
   Animated,
 } from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
+import DraggableFlatList from 'react-native-draggable-flatlist';
 import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './style';
 
@@ -61,12 +61,12 @@ export default function FlexTabs(props: Props) {
   }
 
   useEffect(() => {
-    if (Platform.OS == 'web') {
-      document.addEventListener('contextmenu', handleContextMenu);
-      return () => {
-        document.removeEventListener('contextmenu', handleContextMenu);
-      }
-    }
+    // if (Platform.OS == 'web') {
+    //   document.addEventListener('contextmenu', handleContextMenu);
+    //   return () => {
+    //     document.removeEventListener('contextmenu', handleContextMenu);
+    //   }
+    // }
   })
   
   const guidGenerator = () => {

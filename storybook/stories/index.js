@@ -2,19 +2,29 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
-import { storiesOf } from '@storybook/react-native';
+import { storiesOf, addDecorator, addParameters } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
+import { withKnobs } from '@storybook/addon-knobs';
+import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
 
+import knobsWrapper from './Knobs';
 import Button from './Button';
+// import './Button/Button.stories';
 import CenterView from './CenterView';
 import Welcome from './Welcome';
-import FancySelector from './FancySelector';
-import FlexTabs from './FlexTabs';
-import SlugField from './SlugField';
-import ToolBar from './ToolBar';
-import Timeline from './Timeline';
-import TaskCard from './TaskCard';
+// import FancySelector from './FancySelector';
+import './FancySelector/Selector.stories';
+// import FlexTabs from './FlexTabs';
+import './FlexTabs/FlexTabs.stories';
+// import SlugField from './SlugField';
+import './SlugField/SlugField.stories';
+// import ToolBar from './ToolBar';
+import './ToolBar/ToolBar.stories';
+// import Timeline from './Timeline';
+import './Timeline/Timeline.stories';
+// import TaskCard from './TaskCard';
+import './TaskCard/TaskCard.stories';
 
 const selectorArray = [
   {
@@ -102,7 +112,91 @@ const timelineArray = [
   },
 ];
 
-// storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
+addDecorator(withBackgrounds);
+
+addParameters({
+  backgrounds: [
+    { name: 'dark', value: '#222222' },
+    { name: 'white', value: '#ffffff', default: true },
+  ],
+});
+
+storiesOf('Welcome', module)
+  .addParameters({
+    component: Welcome,
+    // docs: {
+    //   container: DocsContainer,
+    //   page: DocsPage,
+    // },
+  })
+  .add('to Storybook', () => <Welcome showApp={linkTo('Button')} />, {
+    notes: `
+# Markdown!\n
+* List Item
+* [List Item with Link](https://storybook.js.org)
+`,
+  });
+
+storiesOf('Button', module)
+  .addParameters({
+    component: Button,
+  })
+  .addParameters({
+    backgrounds: [
+      { name: 'dark', value: '#222222' },
+      { name: 'light', value: '#eeeeee', default: true },
+    ],
+    notes: `
+              # Custom note\n
+              _This component doesn't look right_
+            `,
+  })
+  .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
+  .add('with text', () => (
+    <Button onPress={action('clicked-text')}>
+      <Text>Hello Button</Text>
+    </Button>
+  ))
+  .add('with some emoji', () => (
+    <Button onPress={action('clicked-emoji')}>
+      <Text>😀 😎 👍 💯</Text>
+    </Button>
+  ));
+
+// storiesOf('Knobs', module).addDecorator(withKnobs).add('with knobs', knobsWrapper);
+
+// storiesOf('Fancy', module)
+//   .add('Selector', () => (
+//     <FancySelector
+//       items={selectorArray}
+//       onChange={() => console.log('onChange clicked')} />),
+//     {
+//       notes: `
+//       # FancySelector\n
+//       `
+//     }
+//   );
+
+// const globalParameter = 'globalParameter';
+// const chapterParameter = 'chapterParameter';
+// const storyParameter = 'storyParameter';
+
+// addParameters({ globalParameter });
+
+// storiesOf('Core|Parameters', module)
+//   .addParameters({ chapterParameter })
+//   .add(
+//     'passed to story',
+//     ({ parameters }) => <Text>Parameters are {JSON.stringify(parameters)}</Text>,
+//     {
+//       storyParameter,
+//     }
+//   );
+
+
+  /*
+
+storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 // storiesOf('Button', module)
 //   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
@@ -118,11 +212,11 @@ const timelineArray = [
 //   ));
 
 storiesOf('Fancy', module)
-  .add('Selector', () => (
-    <FancySelector
-      items={selectorArray}
-      onChange={() => console.log('onChange clicked')} />
-  ))
+  // .add('Selector', () => (
+  //   <FancySelector
+  //     items={selectorArray}
+  //     onChange={() => console.log('onChange clicked')} />
+  // ))
   .add('FlexTabs', () => (
     <FlexTabs
       name='flextab'
@@ -140,16 +234,16 @@ storiesOf('Fancy', module)
       ]}
       canRename={true}
       canAdd={true}
-      canDrag={false}
+      canDrag={true}
       style={{ marginTop: 0 }} />
   ))
   .add('SlugField', () => (
     <SlugField
       domainPrefix='www.google.com'
       domainPrefixItems={[
-        { label: 'linkedin', value: 'www.linkedin.com' },
-        { label: 'www.google.com', value: 'www.google.com' },
-        { label: 'www.facebook.com', value: 'www.facebook.com' },
+        { key: 1, label: 'www.linkedin.com', value: 'www.linkedin.com' },
+        { key: 2, label: 'www.google.com', value: 'www.google.com' },
+        { key: 3, label: 'www.facebook.com', value: 'www.facebook.com' },
       ]}
       showPrefixDropdown={true}
       placeholder='My-slug-name'
@@ -196,4 +290,4 @@ storiesOf('Fancy', module)
         color='#E06969'
         buttonIsVisible={false} />
     </>
-  ));
+  ));*/

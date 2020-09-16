@@ -68,35 +68,46 @@ export default function SlugField(props: Props) {
           <Text style={styles.domainPrefixColor}>https://</Text>
         </View>
         <View style={styles.domainPrefixSection}>
-          <ModalSelector
-            data={domainPrefixItems}
-            initValue='www.google.com'
-            style={{
-              backgroundColor: '#F00000',
-              // borderWidth: 1,
-              // borderColor: 'grey',
-              flexDirection: 'row',
-            }}
-            onChange={(option) => alert(`${option.label}`)} />
-          {/* <DropDownPicker
-            items={domainPrefixItems}
-            defaultValue={domainPrefixText}
-            containerStyle={{ height: 40 }}
-            disabled={!showPrefixDropdown}
-            style={{
-              backgroundColor: '#F00000',
-              borderWidth: 1,
-              borderColor: 'grey',
-            }}
-            labelStyle={{
-              justifyContent: 'flex-start',
-              color: 'white',
-              textAlign: 'left',
-            }}
-            dropDownStyle={{ backgroundColor: 'grey', alignItems: 'flex-start' }}
-            arrowColor='white'
-            onChangeItem={item => setDomainPrefixText(item.value)}
-          /> */}
+          {Platform.OS == 'web' ?
+            <DropDownPicker
+              items={domainPrefixItems}
+              defaultValue={domainPrefixText}
+              containerStyle={{ height: 40, width: '100%' }}
+              disabled={!showPrefixDropdown}
+              style={{
+                backgroundColor: 'grey',
+                borderWidth: 1,
+                borderColor: 'grey',
+              }}
+              labelStyle={{
+                justifyContent: 'flex-start',
+                color: 'white',
+                textAlign: 'left',
+              }}
+              dropDownStyle={{ backgroundColor: 'grey', alignItems: 'flex-start' }}
+              arrowColor='white'
+              onChangeItem={item => setDomainPrefixText(item.value)}
+            /> :
+            <ModalSelector
+              data={domainPrefixItems}
+              initValue='www.google.com'
+              cancelButtonAccessibilityLabel='Cancel'
+              style={{
+                // backgroundColor: '#F00000',
+                borderWidth: 1,
+                borderColor: 'grey',
+                flexDirection: 'row',
+              }}
+              selectTextStyle={{
+                color: 'white',
+              }}
+              selectStyle={{
+                borderWidth: 1,
+                borderColor: 'grey',
+                height: 38,
+              }}
+              onChange={(option) => console.log(`${option.label}`)} />
+          }
         </View>
         <View style={styles.slashSection}>
           <Text style={styles.domainPrefixColor}>/</Text>

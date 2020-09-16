@@ -23,8 +23,10 @@ export default {
     color: 'white',
   },
   domainPrefixSection: {
-    // flex: 1,
+    flex: 1,
     backgroundColor: 'grey',
+    height: '100%',
+    flexWrap: 'wrap',
   },
   slashSection: {
     backgroundColor: 'grey',
