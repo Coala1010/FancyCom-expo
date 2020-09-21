@@ -10,14 +10,14 @@ import {
 import { Entypo, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './style';
 
-interface Props {
+export interface ToolBarProps {
   name?: string;
   leftItems?: Array<Object>;
   title?: string;
   rightItems?: Array<Object>;
 }
 
-export default function ToolBar(props: Props) {
+export function ToolBar(props: ToolBarProps) {
   const {
     name,
     leftItems,

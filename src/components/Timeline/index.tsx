@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import styles from './style';
 
-interface Props {
+export interface TimelineProps {
   type?: String;
   data?: Array<Object>;
   style?: ViewStyle;
@@ -17,7 +17,7 @@ interface Props {
   lineStyle?: ViewStyle;
 }
 
-export default function Timeline(props: Props) {
+export function Timeline(props: TimelineProps) {
   const { type, data, style, barColor, barStyle, lineColor, lineStyle } = props;
 
   const renderTimeline = () => {

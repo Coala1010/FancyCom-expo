@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
 import {
   ScrollView,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
   ViewStyle,
 } from 'react-native';
-import PropTypes from 'prop-types';
 import styles from './style';
 
-interface Props {
+export interface SelectorProps {
   items?: Array<Object>;
   onChange?: () => void;
   style?: ViewStyle;
 }
 
-export default function FancySelector(props: Props) {
+export function FancySelector(props: SelectorProps) {
   const [ value, setValue ] = useState(0);
   const { items, style, onChange } = props;
 

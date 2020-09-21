@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 
-import SlugField from './';
+import { SlugField } from '../../../src/components/SlugField';
 
 storiesOf('Fancy', module)
   .add('SlugField', () => (

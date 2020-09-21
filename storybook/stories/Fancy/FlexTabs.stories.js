@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 
-import FlexTabs from './';
+import { FlexTabs } from '../../../src/components/FlexTabs';
 
 storiesOf('Fancy', module)
   .add('FlexTabs', () => (

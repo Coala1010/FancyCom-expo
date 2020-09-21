@@ -17,7 +17,7 @@ import ModalSelector from 'react-native-modal-selector';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './style';
 
-interface Props {
+export interface SlugFieldProps {
   domainPrefix?: string;
   domainPrefixItems?: Array<string>;
   showPrefixDropdown?: string;
@@ -29,7 +29,7 @@ interface Props {
   label: string;
 }
 
-export default function SlugField(props: Props) {
+export function SlugField(props: SlugFieldProps) {
   const {
     domainPrefix,
     domainPrefixItems,

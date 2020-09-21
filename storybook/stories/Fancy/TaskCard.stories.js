@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 
-import TaskCard from './index';
+import { TaskCard } from '../../../src/components/TaskCard';
 
 storiesOf('Fancy', module)
   .add('TaskCard', () => (

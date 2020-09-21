@@ -1,9 +1,9 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react-native';
+import { storiesOf, addParameters } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 import { MaterialIcons } from '@expo/vector-icons';
 
-import FancySelector from './index';
+import { FancySelector } from '../../../src/components/FancySelector';
 
 const selectorArray = [
   {

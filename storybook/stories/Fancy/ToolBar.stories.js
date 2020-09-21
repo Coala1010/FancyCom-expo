@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 
-import ToolBar from './';
+import { ToolBar } from '../../../src/components/ToolBar';
 
 storiesOf('Fancy', module)
   .add('ToolBar', () => (

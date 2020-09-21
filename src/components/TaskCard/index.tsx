@@ -8,7 +8,7 @@ import {
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './style';
 
-interface Props {
+export interface Props {
   icon?: string;
   title?: string;
   message?: string;
@@ -20,7 +20,7 @@ interface Props {
   buttonComponent: Object;
 }
 
-export default function TaskCard(props: Props) {
+export function TaskCard(props: Props) {
   const { icon, title, message, color, href, buttonIsVisible, buttonHref, buttonLabel, buttonComponent } = props;
 
   const renderTaskCard = () => {

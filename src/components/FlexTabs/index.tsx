@@ -13,10 +13,10 @@ import {
   Animated,
 } from 'react-native';
 import DraggableFlatList from 'react-native-draggable-flatlist';
-import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 import styles from './style';
 
-interface Props {
+export interface FlexTabsProps {
   name?: string;
   tabs?: Array<Object>;
   enableTabDropdowns?: Boolean;
@@ -32,7 +32,7 @@ interface Props {
   vertical: Boolean;
 }
 
-export default function FlexTabs(props: Props) {
+export function FlexTabs(props: FlexTabsProps) {
   const {
     name,
     tabs,
