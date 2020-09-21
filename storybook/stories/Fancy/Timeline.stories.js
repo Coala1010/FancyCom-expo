@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
-import { Timeline } from '../../../src/components/Timeline';
+import { Timeline } from '../../../components/Timeline';
 
 const timelineArray = [
   {

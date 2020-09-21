@@ -3,7 +3,7 @@ import { storiesOf, addParameters } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 import { MaterialIcons } from '@expo/vector-icons';
 
-import { FancySelector } from '../../../src/components/FancySelector';
+import { Selector } from '../../../components/Selector';
 
 const selectorArray = [
   {
@@ -45,7 +45,7 @@ const selectorArray = [
 
 storiesOf('Fancy', module)
   .add('Selector', () => (
-    <FancySelector
+    <Selector
       items={selectorArray}
       onChange={() => console.log('onChange clicked')} />),
     {

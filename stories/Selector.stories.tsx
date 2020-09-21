@@ -3,17 +3,17 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { MaterialIcons } from '@expo/vector-icons';
 
-import { FancySelector, SelectorProps } from '../src/components/FancySelector';
+import { Selector, SelectorProps } from '../components/Selector';
 
 export default {
   title: 'Fancy/Selector',
-  component: FancySelector,
+  component: Selector,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
 } as Meta;
 
-const Template: Story<SelectorProps> = (args) => <FancySelector {...args} />;
+const Template: Story<SelectorProps> = (args) => <Selector {...args} />;
 
 const selectorArray1 = [
   {

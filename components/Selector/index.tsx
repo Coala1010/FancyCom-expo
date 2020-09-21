@@ -14,7 +14,7 @@ export interface SelectorProps {
   style?: ViewStyle;
 }
 
-export function FancySelector(props: SelectorProps) {
+export function Selector(props: SelectorProps) {
   const [ value, setValue ] = useState(0);
   const { items, style, onChange } = props;
 
@@ -44,5 +44,5 @@ export function FancySelector(props: SelectorProps) {
   );
 }
 
-FancySelector.defaultProps = {
+Selector.defaultProps = {
 };
