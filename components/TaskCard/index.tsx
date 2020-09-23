@@ -60,9 +60,9 @@ export function TaskCard(props: TaskCardProps) {
   }
 
   return (
-    <>
+    <View style={styles.screen}>
       {renderTaskCard()}
-    </>
+    </View>
   );
 }
 

@@ -1,8 +1,10 @@
-export default {
+import { StyleSheet, Platform, StatusBar } from 'react-native';
+
+export default StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: 'white',
-    padding: 15,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 15,
   },
   container: {
     flexDirection: 'row',
@@ -49,4 +51,4 @@ export default {
     marginTop: 5,
     color: 'darkgrey',
   },
-};
+});

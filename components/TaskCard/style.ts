@@ -1,22 +1,18 @@
-export default {
+import { StyleSheet, Platform, StatusBar } from 'react-native';
+
+export default StyleSheet.create({
   screen: {
-    flex: 1,
     backgroundColor: 'white',
-    padding: 15,
+    marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 15,
   },
   container: {
     flexDirection: 'row',
-    margin: 15,
+    marginHorizontal: 15,
   },
   leftBar: {
     flex: 1,
     width: 5,
     backgroundColor: '#81BC7E', 
-  },
-  barSection: {
-    height: '100%',
-    flexDirection: 'column',
-    alignItems: 'center',
   },
   taskCard: {
     width: '100%',
@@ -28,6 +24,7 @@ export default {
     borderTopWidth: 2,
     borderBottomWidth: 2,
     borderRightWidth: 2,
+    // backgroundColor: 'red',
   },
   textSection: {
     flex: 1,
@@ -55,4 +52,4 @@ export default {
     fontWeight: '500',
     fontSize: 12,
   },
-};
+});

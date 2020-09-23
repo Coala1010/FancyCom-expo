@@ -10,7 +10,7 @@ import styles from './style';
 
 export interface SelectorProps {
   items?: Array<Object>;
-  onChange?: () => void;
+  onChange: () => void;
   style?: ViewStyle;
 }
 
@@ -19,27 +19,29 @@ export function Selector(props: SelectorProps) {
   const { items, style, onChange } = props;
 
   return (
-    <View style={[styles.container, style]}>
-      <ScrollView
-        showsHorizontalScrollIndicator={false}
-        horizontal={true}>
-      {items && items.map((item, index) =>
-        <TouchableOpacity
-          onPress={() => {
-            setValue(index);
-            onChange();
-          }}
-          key={item.id}
-          style={[styles.alignItemContainer, { backgroundColor: value == index ? '#F4F4F4' : 'white' }]}>
-          <View style={styles.alignItemSection}>
-            <View style={styles.alignIconSection}>
-              {item.icon}
+    <View style={styles.screen}>
+      <View style={[styles.container, style]}>
+        <ScrollView
+          showsHorizontalScrollIndicator={false}
+          horizontal={true}>
+        {items && items.map((item, index) =>
+          <TouchableOpacity
+            onPress={() => {
+              setValue(index);
+              onChange();
+            }}
+            key={item.id}
+            style={[styles.alignItemContainer, { backgroundColor: value == index ? '#F4F4F4' : 'white' }]}>
+            <View style={styles.alignItemSection}>
+              <View style={styles.alignIconSection}>
+                {item.icon}
+              </View>
+              <Text style={{ color: 'black', fontSize: 12, marginTop: 5 }}>{item.label}</Text>
             </View>
-            <Text style={{ color: 'black', fontSize: 12, marginTop: 5 }}>{item.label}</Text>
-          </View>
-        </TouchableOpacity>)
-      }
-      </ScrollView>
+          </TouchableOpacity>)
+        }
+        </ScrollView>
+      </View>
     </View>
   );
 }

@@ -6,7 +6,7 @@ import { ToolBar } from '../../../components/ToolBar';
 storiesOf('Fancy', module)
   .add('ToolBar', () => (
     <ToolBar
-      name='Project Name   >   Object Name'
+      title='Project Name > Object Name'
     />
   ), {
     notes: `

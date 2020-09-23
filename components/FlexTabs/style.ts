@@ -1,7 +1,10 @@
-export default {
+import { StyleSheet, Platform, StatusBar } from 'react-native';
+
+export default StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: 'white',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   container: {
     flexDirection: 'row',
@@ -43,7 +46,6 @@ export default {
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    // flex: 1, 
     width: '100%',
   },
   openButton: {
@@ -59,8 +61,4 @@ export default {
     fontWeight: "bold",
     textAlign: "center"
   },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center"
-  }
-};
+});

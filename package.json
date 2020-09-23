@@ -9,7 +9,8 @@
     "test": "jest --watchAll",
     "storybook": "start-storybook -p 7007",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token i79zdl4nk28"
+    "chromatic": "npx chromatic --project-token i79zdl4nk28",
+    "build-static-webapp": "expo build:web"
   },
   "jest": {
     "preset": "jest-expo",

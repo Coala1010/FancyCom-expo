@@ -151,11 +151,30 @@ export function FlexTabs(props: FlexTabsProps) {
     </Modal>
   )
 
-  const renderItem = ({ item, index, drag, isActive }) => {
+  const renderDragItem = ({ item, index, drag, isActive }) => {
     return (
       <TouchableOpacity
         onPress={() => setNSelItem(item.id)}
         onLongPress={drag}
+        style={[styles.tabBtn, { borderBottomColor: nSelItem == item.id ? '#008DD8' : 'white' }]}>
+        <Text style={{ color: nSelItem == item.id ? '#008DD8' : '#607380' }}>{item.name}</Text>
+        {enableTabDropdowns &&
+          <TouchableOpacity
+            onPress={() => {
+              setTabTitle(item.name);
+              setModalVisible(true);
+            }}
+            style={{ width: 20 }}>
+          {nSelItem == item.id && <Entypo name='chevron-down' color='#008DD8' size={20} style={{ marginLeft: 5 }} />}
+          </TouchableOpacity>}
+      </TouchableOpacity>
+    )
+  }
+
+  const renderNormalItem = ({ item, index }) => {
+    return (
+      <TouchableOpacity
+        onPress={() => setNSelItem(item.id)}
         style={[styles.tabBtn, { borderBottomColor: nSelItem == item.id ? '#008DD8' : 'white' }]}>
         <Text style={{ color: nSelItem == item.id ? '#008DD8' : '#607380' }}>{item.name}</Text>
         {enableTabDropdowns &&
@@ -179,7 +198,7 @@ export function FlexTabs(props: FlexTabsProps) {
             <DraggableFlatList
               data={tabsData}
               keyExtractor={(item, index) => index.toString()}
-              renderItem={renderItem}
+              renderItem={renderDragItem}
               onDragEnd={({ data }) => setTabsData(data)}
               showsHorizontalScrollIndicator={false}
               horizontal={true}
@@ -188,7 +207,7 @@ export function FlexTabs(props: FlexTabsProps) {
               data={tabsData}
               keyExtractor={(item, index) => index.toString()}
               contentContainerStyle={{ alignSelf: 'center', flexDirection: 'row' }}
-              renderItem={renderItem}
+              renderItem={renderNormalItem}
               showsHorizontalScrollIndicator={false}
               horizontal={true}
             />
