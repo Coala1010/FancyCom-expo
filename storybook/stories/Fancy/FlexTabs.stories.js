@@ -11,6 +11,9 @@ storiesOf('Fancy', module)
         { id: 1, name: 'Builder' },
         { id: 2, name: 'Calendar' },
         { id: 3, name: 'Insights' },
+        { id: 4, name: 'Moments' },
+        { id: 5, name: 'About' },
+        { id: 6, name: 'Terminal' },
       ]}
       enableTabDropdowns={true}
       tabActions={[

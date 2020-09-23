@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   Image,
   Modal,
+  Platform,
   ScrollView,
   Text,
   TextInput,
@@ -58,22 +59,20 @@ export function ToolBar(props: ToolBarProps) {
 
   return (
     <View style={styles.screen}>
-      <View style={styles.scrollViewWrapper}>
-        <ScrollView
-          showsHorizontalScrollIndicator={false}
-          horizontal={true}>
-          <View style={styles.container}>
-            <View style={styles.leftItemsSection}>
-              <TouchableOpacity>
-                <Feather name='align-justify' size={30} color='#9EA9B1' />
-              </TouchableOpacity>
-              <Image source={require('./ambid_logo.png')} resizeMode='contain' style={styles.logoImg} />
-            </View>
-            <Text
-              onLongPress={() => setTitleModalVisible(true)}
-              style={styles.toolbarTitleText}>
-              {titleText}
-            </Text>
+      <View style={styles.container}>
+        <View style={styles.leftItemsSection}>
+          <TouchableOpacity>
+            <Feather name='align-justify' size={30} color='#9EA9B1' />
+          </TouchableOpacity>
+          {Platform.OS === 'web' && <Image source={require('./ambid_logo.png')} resizeMode='contain' style={styles.logoImg} />}
+        </View>
+        <Text
+          onLongPress={() => setTitleModalVisible(true)}
+          style={styles.toolbarTitleText}>
+          {titleText}
+        </Text>
+        <View>
+          {Platform.OS === 'web' &&
             <View style={styles.rightItemsSection}>
               <Feather name='search' size={25} color='#9EA9B1' style={styles.rightItemElement} />
               <MaterialCommunityIcons name='account-plus-outline' size={30} color='#9EA9B1' style={styles.rightItemElement} />
@@ -85,8 +84,8 @@ export function ToolBar(props: ToolBarProps) {
                 <Entypo name='chevron-down' size={20} color='#9EA9B1' />
               </TouchableOpacity>
             </View>
-          </View>
-        </ScrollView>
+          }
+        </View>
       </View>
       {renderTitleEditModal}
     </View>
