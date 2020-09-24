@@ -3,7 +3,6 @@ import {
   Image,
   Modal,
   Platform,
-  ScrollView,
   Text,
   TextInput,
   View,
@@ -66,11 +65,11 @@ export function ToolBar(props: ToolBarProps) {
           </TouchableOpacity>
           {Platform.OS === 'web' && <Image source={require('./ambid_logo.png')} resizeMode='contain' style={styles.logoImg} />}
         </View>
-        <Text
-          onLongPress={() => setTitleModalVisible(true)}
-          style={styles.toolbarTitleText}>
-          {titleText}
-        </Text>
+        <TouchableOpacity onLongPress={() => setTitleModalVisible(true)}>
+          <Text style={styles.toolbarTitleText}>
+            {titleText}
+          </Text>
+        </TouchableOpacity>
         <View>
           {Platform.OS === 'web' &&
             <View style={styles.rightItemsSection}>

@@ -105,7 +105,7 @@ export function FlexTabs(props: FlexTabsProps) {
           {tabActions && tabActions.map((item, index) =>
             <TouchableHighlight
               key={index.toString()}
-              style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
+              style={styles.openButton}
               onPress={() => {
                 setModalVisible(!modalVisible);
                 if (canRename) {
@@ -143,7 +143,7 @@ export function FlexTabs(props: FlexTabsProps) {
             maxLength={30}
           />
           <TouchableHighlight
-            style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
+            style={styles.openButton}
             onPress={() => {
               let tmpTabsData = tabsData;
               if (tabTitle != '') {
@@ -270,8 +270,8 @@ export function FlexTabs(props: FlexTabsProps) {
           <Entypo name='dots-three-horizontal' color='#607380' size={25} />
         </TouchableOpacity>
       </View>
-      {renderContextModal}
-      {renderEditTabTitle}
+      {modalVisible && renderContextModal}
+      {editModalVisible && renderEditTabTitle}
       {/* <DraggableFlatList
         data={tabsData}
         keyExtractor={(item, index) => index.toString()}
