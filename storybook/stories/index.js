@@ -24,6 +24,8 @@ import './Fancy/ToolBar.stories';
 import './Fancy/Timeline.stories';
 // import TaskCard from './TaskCard';
 import './Fancy/TaskCard.stories';
+import './Button/Button.stories';
+import './Welcome/Welcome.stories';
 
 addDecorator(withBackgrounds);
 
