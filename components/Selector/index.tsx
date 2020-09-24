@@ -8,8 +8,14 @@ import {
 } from 'react-native';
 import styles from './style';
 
+interface ItemProps {
+  id: string;
+  label: string;
+  icon: Object;
+}
+
 export interface SelectorProps {
-  items?: Array<Object>;
+  items: Array<ItemProps>;
   onChange: () => void;
   style?: ViewStyle;
 }

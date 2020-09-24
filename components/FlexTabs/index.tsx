@@ -16,12 +16,29 @@ import DraggableFlatList from 'react-native-draggable-flatlist';
 import { Entypo } from '@expo/vector-icons';
 import styles from './style';
 
+const exampleData = [...Array(10)].map((d, index) => ({
+  key: `item-${index}`, // For example only -- don't use index as your key!
+  label: index,
+  backgroundColor: `rgb(${Math.floor(Math.random() * 255)}, ${index *
+    5}, ${132})`
+}));
+
+interface TabProps {
+  id: string;
+  name: string;
+}
+
+interface TabActionProps {
+  label: string;
+  onSelect: Object;
+}
+
 export interface FlexTabsProps {
   name?: string;
-  tabs?: Array<Object>;
+  tabs?: Array<TabProps>;
   enableTabDropdowns?: Boolean;
   enableContextMenu?: string;
-  tabActions?: Array<Object>;
+  tabActions?: Array<TabActionProps>;
   canRename?: Boolean;
   canDrag?: Boolean;
   overflow?: string;
@@ -56,6 +73,7 @@ export function FlexTabs(props: FlexTabsProps) {
   const [ tabTitle, setTabTitle ] = useState('');
   const [ bEditOrAdd, setEditOrAdd ] = useState(false);
   const [ pan, setPan ] = useState(new Animated.ValueXY());
+  const [ testData, setTestData ] = useState(exampleData);
 
   const handleContextMenu = (e) => {
   }
@@ -165,8 +183,9 @@ export function FlexTabs(props: FlexTabsProps) {
               setModalVisible(true);
             }}
             style={{ width: 20 }}>
-          {nSelItem == item.id && <Entypo name='chevron-down' color='#008DD8' size={20} style={{ marginLeft: 5 }} />}
-          </TouchableOpacity>}
+            {nSelItem == item.id && <Entypo name='chevron-down' color='#008DD8' size={20} style={{ marginLeft: 5 }} />}
+          </TouchableOpacity>
+        }
       </TouchableOpacity>
     )
   }
@@ -190,10 +209,38 @@ export function FlexTabs(props: FlexTabsProps) {
     )
   }
 
+  const renderTestItem = ({ item, index, drag, isActive }) => {
+    return (
+      <TouchableOpacity
+        style={{
+          height: 100,
+          // backgroundColor: isActive ? "blue" : item.backgroundColor,
+          backgroundColor: 'green',
+          borderColor: 'black',
+          borderWidth: 2,
+          alignItems: "center",
+          justifyContent: "center"
+        }}
+        onLongPress={drag}
+      >
+        <Text
+          style={{
+            fontWeight: "bold",
+            color: "white",
+            fontSize: 32
+          }}
+        >
+          {item.name}
+        </Text>
+      </TouchableOpacity>
+    );
+  };
+
+
   return (
     <View style={styles.screen}>
       <View style={[styles.container, style]}>
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
           {canDrag ?
             <DraggableFlatList
               data={tabsData}
@@ -225,6 +272,19 @@ export function FlexTabs(props: FlexTabsProps) {
       </View>
       {renderContextModal}
       {renderEditTabTitle}
+      {/* <DraggableFlatList
+        data={tabsData}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={renderDragItem}
+        onDragEnd={({ data }) => setTabsData(data)}
+        showsHorizontalScrollIndicator={false}
+      />
+      <DraggableFlatList
+        data={tabsData}
+        renderItem={renderTestItem}
+        keyExtractor={(item, index) => `draggable-item-${index}`}
+        onDragEnd={({ data }) => setTabsData(data)}
+      /> */}
     </View>
   );
 }

@@ -87,7 +87,7 @@ export function ToolBar(props: ToolBarProps) {
           }
         </View>
       </View>
-      {renderTitleEditModal}
+      {titleModalVisible && renderTitleEditModal}
     </View>
   );
 }
