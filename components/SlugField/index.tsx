@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
+  Button,
   Clipboard,
   ToastAndroid,
   Alert,
   Linking,
-  Picker,
   Platform,
   Text,
   TextInput,
@@ -13,13 +13,19 @@ import {
   ViewStyle,
 } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
-import ModalSelector from 'react-native-modal-selector';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Modalize } from 'react-native-modalize';
 import styles from './style';
+
+interface domainPrefixProps {
+  key: string,
+  label: string,
+  value: string,
+}
 
 export interface SlugFieldProps {
   domainPrefix?: string;
-  domainPrefixItems?: Array<string>;
+  domainPrefixItems: Array<domainPrefixProps>;
   showPrefixDropdown?: string;
   value?: string;
   showCopyButton?: string;
@@ -45,6 +51,8 @@ export function SlugField(props: SlugFieldProps) {
   const [ slugText, setSlugText ] = useState(value);
   const [ domainPrefixText, setDomainPrefixText ] = useState(domainPrefix);
   const [ timeText, setTimeText ] = useState('');
+  const modalizeRef = useRef<Modalize>(null);
+  const [ modalToggle, setModalToggle ] = useState(true);
 
   const onLinkCopyButton = () => {
     const urlValue = 'http://' + domainPrefixText + '/' + slugText;
@@ -88,25 +96,11 @@ export function SlugField(props: SlugFieldProps) {
               arrowColor='white'
               onChangeItem={item => setDomainPrefixText(item.value)}
             /> :
-            <ModalSelector
-              data={domainPrefixItems}
-              initValue='www.google.com'
-              cancelButtonAccessibilityLabel='Cancel'
-              style={{
-                // backgroundColor: '#F00000',
-                borderWidth: 1,
-                borderColor: 'grey',
-                flexDirection: 'row',
-              }}
-              selectTextStyle={{
-                color: 'white',
-              }}
-              selectStyle={{
-                borderWidth: 1,
-                borderColor: 'grey',
-                height: 38,
-              }}
-              onChange={(option) => console.log(`${option.label}`)} />
+            <TouchableOpacity
+              onPress={() => modalizeRef.current?.open()}
+              style={{ justifyContent: 'center', height: 40 }}>
+              <Text numberOfLines={1} style={{ color: 'white' }}>{domainPrefixText}</Text>
+            </TouchableOpacity>
           }
         </View>
         <View style={styles.slashSection}>
@@ -131,6 +125,20 @@ export function SlugField(props: SlugFieldProps) {
             </TouchableOpacity>}
         </View>
       </View>
+      <Modalize ref={modalizeRef} adjustToContentHeight={modalToggle}>
+        <View style={{ padding: 20 }}>
+          {domainPrefixItems && domainPrefixItems.map((item, index) =>
+            <Button
+              key={item.key.toString()}
+              title={item.label}
+              onPress={() => {
+                setDomainPrefixText(item.value);
+                modalizeRef.current?.close();
+              }}
+            />
+          )}
+        </View>
+      </Modalize>
     </View>
   );
 }
