@@ -96,7 +96,7 @@ export function FlexTabs(props: FlexTabsProps) {
   
   const renderContextModal = (
     <Modal
-      animationType="slide"
+      // animationType="fade"
       transparent={true}
       visible={modalVisible}
       onRequestClose={() => {}}>
@@ -108,12 +108,29 @@ export function FlexTabs(props: FlexTabsProps) {
               style={styles.openButton}
               onPress={() => {
                 setModalVisible(!modalVisible);
-                if (canRename) {
-                  setTimeout(() => {
-                    // item.onSelect();
-                    setEditOrAdd(false);
-                    setEditModalVisible(true);
-                  }, 2000);
+                if (item.label === 'Rename') {
+                  if (canRename) {
+                    setTimeout(() => {
+                      // item.onSelect();
+                      setEditOrAdd(false);
+                      setEditModalVisible(true);
+                    }, 1500);
+                  }
+                } else if (item.label === 'Duplicate') {
+                  let tmpTabsData = tabsData;
+                  var tmp = { id: guidGenerator(), name: nSelItem.name };
+                  tmpTabsData.push(tmp);
+                  setTabsData(tmpTabsData);
+                } else if (item.label === 'Delete') {
+                  let tmpTabsData = tabsData;
+                  if (tmpTabsData.length > 1) {
+                    var index = tmpTabsData.indexOf(nSelItem);
+                    tmpTabsData.splice(index, 1);
+                    setNSelItem(tmpTabsData[0]);
+                    setTabsData(tmpTabsData);
+                  } else {
+                    alert('You can remove the last menu');
+                  }
                 }
               }}>
               <Text style={styles.textStyle}>{item.label}</Text>
@@ -126,7 +143,7 @@ export function FlexTabs(props: FlexTabsProps) {
 
   const renderEditTabTitle = (
     <Modal
-      animationType="slide"
+      // animationType="slide"
       transparent={true}
       visible={editModalVisible}
       onRequestClose={() => {
@@ -152,7 +169,7 @@ export function FlexTabs(props: FlexTabsProps) {
                   tmpTabsData.push(tmp);
                 } else if (!bEditOrAdd && canRename) {
                   for (var i = 0; i < tabsData.length; i++) {
-                    if (tabsData[i].id == nSelItem) {
+                    if (tabsData[i].id == nSelItem.id) {
                       tmpTabsData[i].name = tabTitle;
                       break;
                     }
@@ -172,10 +189,10 @@ export function FlexTabs(props: FlexTabsProps) {
   const renderDragItem = ({ item, index, drag, isActive }) => {
     return (
       <TouchableOpacity
-        onPress={() => setNSelItem(item.id)}
+        onPress={() => setNSelItem(item)}
         onLongPress={drag}
-        style={[styles.tabBtn, { borderBottomColor: nSelItem == item.id ? '#008DD8' : 'white' }]}>
-        <Text style={{ color: nSelItem == item.id ? '#008DD8' : '#607380' }}>{item.name}</Text>
+        style={[styles.tabBtn, { borderBottomColor: nSelItem.id == item.id ? '#008DD8' : 'white' }]}>
+        <Text style={{ color: nSelItem.id == item.id ? '#008DD8' : '#607380' }}>{item.name}</Text>
         {enableTabDropdowns &&
           <TouchableOpacity
             onPress={() => {
@@ -183,7 +200,7 @@ export function FlexTabs(props: FlexTabsProps) {
               setModalVisible(true);
             }}
             style={{ width: 20 }}>
-            {nSelItem == item.id && <Entypo name='chevron-down' color='#008DD8' size={20} style={{ marginLeft: 5 }} />}
+            {nSelItem.id == item.id && <Entypo name='chevron-down' color='#008DD8' size={20} style={{ marginLeft: 5 }} />}
           </TouchableOpacity>
         }
       </TouchableOpacity>
@@ -240,7 +257,7 @@ export function FlexTabs(props: FlexTabsProps) {
   return (
     <View style={styles.screen}>
       <View style={[styles.container, style]}>
-        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ alignItems: 'center', justifyContent: 'center',  paddingHorizontal: 15, flex: 1 }}>
           {canDrag ?
             <DraggableFlatList
               data={tabsData}

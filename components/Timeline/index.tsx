@@ -7,9 +7,16 @@ import {
 } from 'react-native';
 import styles from './style';
 
+interface dataProps {
+  title: string,
+  subTitle: string,
+  date: string,
+  icon: Object,
+}
+
 export interface TimelineProps {
   type?: String;
-  data?: Array<Object>;
+  data?: Array<dataProps>;
   style?: ViewStyle;
   barColor?: String;
   barStyle?: ViewStyle;
@@ -46,7 +53,7 @@ export function Timeline(props: TimelineProps) {
 
   return (
     <View style={[styles.screen, style]}>
-      <ScrollView>
+      <ScrollView style={{ paddingHorizontal: 15 }}>
         {type == 'VERTICAL' && renderTimeline()}
       </ScrollView>
     </View>

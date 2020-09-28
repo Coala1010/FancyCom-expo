@@ -15,6 +15,7 @@ export default StyleSheet.create({
     borderTopColor: 'grey',
     borderTopWidth: 1,
     marginVertical: 5,
+    width: '100%',
   },
   tabBtn: {
     paddingHorizontal: 10,

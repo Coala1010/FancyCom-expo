@@ -17,7 +17,7 @@ storiesOf('Fancy', module)
       ]}
       enableTabDropdowns={true}
       tabActions={[
-        { label: 'Rename', onSelect: () => alert('onSelect clicked') },
+        { label: 'Rename', onSelect: () => console.log('onSelect clicked') },
         { label: 'Duplicate', onSelect: () => console.log('onSelect clicked') },
         { label: 'Delete', onSelect: () => console.log('onSelect clicked') },
       ]}
