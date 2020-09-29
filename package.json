@@ -39,7 +39,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
-    "react-native-draggable-flatlist": "^2.4.0",
+    "react-native-draggable-flatlist": "2.3.6",
     "react-native-dropdown-picker": "^3.6.8",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-modalize": "^2.0.6",

@@ -18,7 +18,7 @@ import styles from './style';
 
 const exampleData = [...Array(10)].map((d, index) => ({
   key: `item-${index}`, // For example only -- don't use index as your key!
-  label: index,
+  name: index,
   backgroundColor: `rgb(${Math.floor(Math.random() * 255)}, ${index *
     5}, ${132})`
 }));
@@ -72,20 +72,7 @@ export function FlexTabs(props: FlexTabsProps) {
   const [ editModalVisible, setEditModalVisible ] = useState(false);
   const [ tabTitle, setTabTitle ] = useState('');
   const [ bEditOrAdd, setEditOrAdd ] = useState(false);
-  const [ pan, setPan ] = useState(new Animated.ValueXY());
   const [ testData, setTestData ] = useState(exampleData);
-
-  const handleContextMenu = (e) => {
-  }
-
-  useEffect(() => {
-    // if (Platform.OS == 'web') {
-    //   document.addEventListener('contextmenu', handleContextMenu);
-    //   return () => {
-    //     document.removeEventListener('contextmenu', handleContextMenu);
-    //   }
-    // }
-  })
   
   const guidGenerator = () => {
     var S4 = function() {
@@ -114,7 +101,7 @@ export function FlexTabs(props: FlexTabsProps) {
                       // item.onSelect();
                       setEditOrAdd(false);
                       setEditModalVisible(true);
-                    }, 1500);
+                    }, 1000);
                   }
                 } else if (item.label === 'Duplicate') {
                   let tmpTabsData = tabsData;
@@ -225,16 +212,13 @@ export function FlexTabs(props: FlexTabsProps) {
       </TouchableOpacity>
     )
   }
-
-  const renderTestItem = ({ item, index, drag, isActive }) => {
+  
+  const renderItem = ({ item, index, drag, isActive }) => {
     return (
       <TouchableOpacity
         style={{
           height: 100,
-          // backgroundColor: isActive ? "blue" : item.backgroundColor,
-          backgroundColor: 'green',
-          borderColor: 'black',
-          borderWidth: 2,
+          backgroundColor: isActive ? "blue" : item.backgroundColor,
           alignItems: "center",
           justifyContent: "center"
         }}
@@ -252,7 +236,6 @@ export function FlexTabs(props: FlexTabsProps) {
       </TouchableOpacity>
     );
   };
-
 
   return (
     <View style={styles.screen}>
@@ -289,19 +272,14 @@ export function FlexTabs(props: FlexTabsProps) {
       </View>
       {modalVisible && renderContextModal}
       {editModalVisible && renderEditTabTitle}
-      {/* <DraggableFlatList
-        data={tabsData}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={renderDragItem}
-        onDragEnd={({ data }) => setTabsData(data)}
-        showsHorizontalScrollIndicator={false}
-      />
-      <DraggableFlatList
-        data={tabsData}
-        renderItem={renderTestItem}
-        keyExtractor={(item, index) => `draggable-item-${index}`}
-        onDragEnd={({ data }) => setTabsData(data)}
-      /> */}
+      <View style={{ flex: 1 }}>
+        <DraggableFlatList
+          data={testData}
+          renderItem={renderItem}
+          keyExtractor={(item, index) => `draggable-item-${item.key}`}
+          onDragEnd={({ data }) => setTestData(data)}
+        />
+      </View>
     </View>
   );
 }
