@@ -10,26 +10,27 @@ import {
   TextInput,
   View,
   TouchableOpacity,
-  ViewStyle,
+  ViewStyle
 } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import { Modalize } from 'react-native-modalize';
+
 import styles from './style';
 
 interface domainPrefixProps {
-  key: string,
-  label: string,
-  value: string,
+  key: string;
+  label: string;
+  value: string;
 }
 
 export interface SlugFieldProps {
   domainPrefix?: string;
-  domainPrefixItems: Array<domainPrefixProps>;
+  domainPrefixItems: domainPrefixProps[];
   showPrefixDropdown?: string;
   value?: string;
   showCopyButton?: string;
-  showLinkIcon?: Boolean;
+  showLinkIcon?: boolean;
   style?: ViewStyle;
   placeholder?: string;
   label: string;
@@ -45,14 +46,14 @@ export function SlugField(props: SlugFieldProps) {
     showLinkIcon,
     style,
     placeholder,
-    label,
+    label
   } = props;
 
-  const [ slugText, setSlugText ] = useState(value);
-  const [ domainPrefixText, setDomainPrefixText ] = useState(domainPrefix);
-  const [ timeText, setTimeText ] = useState('');
+  const [slugText, setSlugText] = useState(value);
+  const [domainPrefixText, setDomainPrefixText] = useState(domainPrefix);
+  const [timeText, setTimeText] = useState('');
   const modalizeRef = useRef<Modalize>(null);
-  const [ modalToggle, setModalToggle ] = useState(true);
+  const [modalToggle, setModalToggle] = useState(true);
 
   const onLinkCopyButton = () => {
     const urlValue = 'http://' + domainPrefixText + '/' + slugText;
@@ -62,12 +63,12 @@ export function SlugField(props: SlugFieldProps) {
     } else {
       Alert.alert('Copied the url', urlValue);
     }
-  }
+  };
 
   const onLinkLaunchButton = () => {
     const urlValue = 'http://' + domainPrefixText + '/' + slugText;
     Linking.openURL(urlValue);
-  }
+  };
 
   return (
     <View style={styles.screen}>
@@ -76,7 +77,7 @@ export function SlugField(props: SlugFieldProps) {
           <Text style={styles.domainPrefixColor}>https://</Text>
         </View>
         <View style={styles.domainPrefixSection}>
-          {Platform.OS == 'web' ?
+          {Platform.OS === 'web' ? (
             <DropDownPicker
               items={domainPrefixItems}
               defaultValue={domainPrefixText}
@@ -85,23 +86,26 @@ export function SlugField(props: SlugFieldProps) {
               style={{
                 backgroundColor: 'grey',
                 borderWidth: 1,
-                borderColor: 'grey',
+                borderColor: 'grey'
               }}
               labelStyle={{
                 justifyContent: 'flex-start',
                 color: 'white',
-                textAlign: 'left',
+                textAlign: 'left'
               }}
               dropDownStyle={{ backgroundColor: 'grey', alignItems: 'flex-start' }}
               arrowColor='white'
-              onChangeItem={item => setDomainPrefixText(item.value)}
-            /> :
+              onChangeItem={(item) => setDomainPrefixText(item.value)}
+            />
+          ) : (
             <TouchableOpacity
               onPress={() => modalizeRef.current?.open()}
               style={{ justifyContent: 'center', height: 40 }}>
-              <Text numberOfLines={1} style={{ color: 'white' }}>{domainPrefixText}</Text>
+              <Text numberOfLines={1} style={{ color: 'white' }}>
+                {domainPrefixText}
+              </Text>
             </TouchableOpacity>
-          }
+          )}
         </View>
         <View style={styles.slashSection}>
           <Text style={styles.domainPrefixColor}>/</Text>
@@ -115,28 +119,36 @@ export function SlugField(props: SlugFieldProps) {
           onChangeText={(text) => setSlugText(text)}
         />
         <View style={styles.buttonsSection}>
-          {showCopyButton &&
+          {showCopyButton && (
             <TouchableOpacity onPress={onLinkCopyButton}>
               <Feather name='copy' color='grey' size={22} style={{ marginHorizontal: 3 }} />
-            </TouchableOpacity>}
-          {showLinkIcon &&
+            </TouchableOpacity>
+          )}
+          {showLinkIcon && (
             <TouchableOpacity onPress={onLinkLaunchButton}>
-              <MaterialCommunityIcons name='launch' color='grey' size={25} style={{ marginHorizontal: 3 }} />
-            </TouchableOpacity>}
+              <MaterialCommunityIcons
+                name='launch'
+                color='grey'
+                size={25}
+                style={{ marginHorizontal: 3 }}
+              />
+            </TouchableOpacity>
+          )}
         </View>
       </View>
       <Modalize ref={modalizeRef} adjustToContentHeight={modalToggle}>
         <View style={{ padding: 20 }}>
-          {domainPrefixItems && domainPrefixItems.map((item, index) =>
-            <Button
-              key={item.key.toString()}
-              title={item.label}
-              onPress={() => {
-                setDomainPrefixText(item.value);
-                modalizeRef.current?.close();
-              }}
-            />
-          )}
+          {domainPrefixItems &&
+            domainPrefixItems.map((item, index) => (
+              <Button
+                key={item.key.toString()}
+                title={item.label}
+                onPress={() => {
+                  setDomainPrefixText(item.value);
+                  modalizeRef.current?.close();
+                }}
+              />
+            ))}
         </View>
       </Modalize>
     </View>
@@ -145,5 +157,5 @@ export function SlugField(props: SlugFieldProps) {
 
 SlugField.defaultProps = {
   showCopyButton: true,
-  showLinkIcon: true,
+  showLinkIcon: true
 };
