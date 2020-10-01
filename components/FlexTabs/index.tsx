@@ -66,7 +66,7 @@ export function FlexTabs(props: FlexTabsProps) {
   } = props;
 
   const [tabsData, setTabsData] = useState(tabs);
-  const [nSelItem, setNSelItem] = useState(tabs[0].id);
+  const [nSelItem, setNSelItem] = useState(tabs[0]);
   const [modalVisible, setModalVisible] = useState(false);
   const [editModalVisible, setEditModalVisible] = useState(false);
   const [tabTitle, setTabTitle] = useState('');
@@ -222,28 +222,6 @@ export function FlexTabs(props: FlexTabsProps) {
             )}
           </TouchableOpacity>
         )}
-      </TouchableOpacity>
-    );
-  };
-
-  const renderItem = ({ item, index, drag, isActive }) => {
-    return (
-      <TouchableOpacity
-        style={{
-          height: 100,
-          backgroundColor: isActive ? 'blue' : item.backgroundColor,
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-        onLongPress={drag}>
-        <Text
-          style={{
-            fontWeight: 'bold',
-            color: 'white',
-            fontSize: 32
-          }}>
-          {item.name}
-        </Text>
       </TouchableOpacity>
     );
   };
