@@ -8,10 +8,11 @@
     "eject": "expo eject",
     "test": "jest --watchAll",
     "storybook": "start-storybook -p 7007",
-    "build-storybook": "build-storybook",
+    // "build-storybook": "build-storybook",
     "chromatic": "npx chromatic --project-token i79zdl4nk28",
     "build-static-webapp": "expo build:web",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages",
+    "build-storybook": "build-storybook -s public"
   },
   "jest": {
     "preset": "jest-expo",
