@@ -13,9 +13,6 @@
     "deploy-storybook": "storybook-to-ghpages",
     "build-storybook": "build-storybook -s public"
   },
-  "jest": {
-    "preset": "jest-expo"
-  },
   "dependencies": {
     "@expo/vector-icons": "^10.2.1",
     "@expo/webpack-config": "^0.12.29",
