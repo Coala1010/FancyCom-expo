@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/static/js/app.3383e566.chunk.js",
-    "app.js.map": "/static/js/app.3383e566.chunk.js.map",
+    "app.js": "/static/js/app.18ec3c95.chunk.js",
+    "app.js.map": "/static/js/app.18ec3c95.chunk.js.map",
     "runtime~app.js": "/static/js/runtime~app.34c76111.js",
     "runtime~app.js.map": "/static/js/runtime~app.34c76111.js.map",
-    "static/js/2.99b4c35b.chunk.js": "/static/js/2.99b4c35b.chunk.js",
-    "static/js/2.99b4c35b.chunk.js.map": "/static/js/2.99b4c35b.chunk.js.map",
+    "static/js/2.3441fe21.chunk.js": "/static/js/2.3441fe21.chunk.js",
+    "static/js/2.3441fe21.chunk.js.map": "/static/js/2.3441fe21.chunk.js.map",
     "fonts/AntDesign.ttf": "/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/./fonts/Feather.ttf",
@@ -26,12 +26,12 @@
     "serve.json": "/serve.json",
     "static/media/ambid_logo.png": "/static/media/ambid_logo.a7d54244.png",
     "static/media/ambid_user.png": "/static/media/ambid_user.cc464be0.png",
-    "static/media/color-circle.png": "/static/media/color-circle.fb8bbc26.png",
-    "static/media/hsv_triangle_mask.png": "/static/media/hsv_triangle_mask.9d4466bc.png"
+    "static/media/color-circle.png": "/static/media/color-circle.4e2e23bf.png",
+    "static/media/hsv_triangle_mask.png": "/static/media/hsv_triangle_mask.d06dff3e.png"
   },
   "entrypoints": [
     "static/js/runtime~app.34c76111.js",
-    "static/js/2.99b4c35b.chunk.js",
-    "static/js/app.3383e566.chunk.js"
+    "static/js/2.3441fe21.chunk.js",
+    "static/js/app.18ec3c95.chunk.js"
   ]
 }

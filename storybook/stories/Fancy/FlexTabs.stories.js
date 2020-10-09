@@ -3,8 +3,9 @@ import { storiesOf } from '@storybook/react-native';
 
 import { FlexTabs } from '../../../components/FlexTabs';
 
-storiesOf('Fancy', module)
-  .add('FlexTabs', () => (
+storiesOf('Fancy', module).add(
+  'FlexTabs',
+  () => (
     <FlexTabs
       name='flextab'
       tabs={[
@@ -13,19 +14,21 @@ storiesOf('Fancy', module)
         { id: 3, name: 'Insights' },
         { id: 4, name: 'Moments' },
         { id: 5, name: 'About' },
-        { id: 6, name: 'Terminal' },
+        { id: 6, name: 'Terminal' }
       ]}
-      enableTabDropdowns={true}
+      enableTabDropdowns
       tabActions={[
         { label: 'Rename', onSelect: () => console.log('onSelect clicked') },
         { label: 'Duplicate', onSelect: () => console.log('onSelect clicked') },
-        { label: 'Delete', onSelect: () => console.log('onSelect clicked') },
+        { label: 'Delete', onSelect: () => console.log('onSelect clicked') }
       ]}
-      canRename={true}
-      canAdd={true}
-      canDrag={true}
-      style={{ marginTop: 0 }} />
-  ), {
+      canRename
+      canAdd
+      canDrag
+      style={{ marginTop: 0 }}
+    />
+  ),
+  {
     notes: `
       # FlexTabs
       ## Description
@@ -135,4 +138,5 @@ storiesOf('Fancy', module)
           * Triggers the onEventTrigger("TabDelete") plugin hook when a tab is deleted
           * Triggers the onEventTrigger("TabCreate") plugin hook when a tab is created
     `
-  });
+  }
+);
