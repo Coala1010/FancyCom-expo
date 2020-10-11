@@ -1,6 +1,6 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { storiesOf } from '@storybook/react-native';
+import React from 'react';
 
 import { Timeline } from '../../../components/Timeline';
 
@@ -16,50 +16,52 @@ const timelineArray = [
     tooltip: null,
     cardContainer: null,
     zIndex: 1,
-    subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    subTitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     date: 'Jan 25, 2020',
-    icon: <MaterialIcons name='check' size={17} color='white' />,
+    icon: <MaterialIcons name='check' size={17} color='white' />
   },
   {
     title: 'Completed profile data',
-    subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    subTitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     date: 'Jan 25, 2020',
-    icon: <MaterialIcons name='drafts' size={17} color='white' />,
+    icon: <MaterialIcons name='drafts' size={17} color='white' />
   },
   {
     title: 'Completed profile data',
-    subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    subTitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     date: 'Jan 25, 2020',
-    icon: <MaterialIcons name='edit' size={17} color='white' />,
+    icon: <MaterialIcons name='edit' size={17} color='white' />
   },
   {
     title: 'Completed profile data',
-    subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    subTitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     date: 'Jan 25, 2020',
-    icon: <MaterialIcons name='launch' size={17} color='white' />,
+    icon: <MaterialIcons name='launch' size={17} color='white' />
   },
   {
     title: 'Completed profile data',
-    subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    subTitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     date: 'Jan 25, 2020',
-    icon: <MaterialIcons name='lock' size={17} color='white' />,
+    icon: <MaterialIcons name='lock' size={17} color='white' />
   },
   {
     title: 'Completed profile data',
-    subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    subTitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     date: 'Jan 25, 2020',
-    icon: <MaterialIcons name='notifications-active' size={17} color='white' />,
-  },
+    icon: <MaterialIcons name='notifications-active' size={17} color='white' />
+  }
 ];
 
-storiesOf('Fancy', module)
-  .add('Timeline', () => (
-    <Timeline
-      data={timelineArray}
-      type='VERTICAL'
-      barColor='#49A6E9'
-      lineColor='#49A6E9' />
-  ), {
+storiesOf('Fancy', module).add(
+  'Timeline',
+  () => <Timeline data={timelineArray} type='VERTICAL' barColor='#49A6E9' lineColor='#49A6E9' />,
+  {
     notes: `
       # Activity Timeline
       ## Description
@@ -118,6 +120,6 @@ storiesOf('Fancy', module)
           * Should trigger the onComponentRender("ActivityTimeline") plugin hook when the component is being rendered in the dom
           * Should trigger the onListItems("ActivityTimelineEvents") plugin hook when the list of events are bieng generated
           * Should trigger the onEventTrigger("ActivityTimeilneEventClick") plugin hook when an event is being clicked on
-          
     `
-  });
+  }
+);

@@ -1,36 +1,41 @@
-import React from 'react';
 import { storiesOf } from '@storybook/react-native';
+import React from 'react';
 
 import { TaskCard } from '../../../components/TaskCard';
 
-storiesOf('Fancy', module)
-  .add('TaskCard', () => (
+storiesOf('Fancy', module).add(
+  'TaskCard',
+  () => (
     <>
       <TaskCard
         icon='check-circle'
         title='Watch Getting Started Video'
         message='Lorem ipsum dolor sit amet, consectetur adipiscing elit,'
         // color='red'
-        buttonIsVisible={true}
+        buttonIsVisible
         // buttonComponent={<View />}
         buttonHref='https://www.google.com'
-        buttonLabel='Button' />
+        buttonLabel='Button'
+      />
       <TaskCard
         icon='apple-icloud'
         title='Publish first funnel'
         message='Donec aliquet ipsum vel vehicula'
         color='#2C8AC8'
         href='https://www.google.com'
-        buttonIsVisible={true}
-        buttonLabel='Cloud' />
+        buttonIsVisible
+        buttonLabel='Cloud'
+      />
       <TaskCard
         icon='compass-outline'
         title='Blog title goes here'
         message='Lorem ipsum sit dolor amet...'
         color='#E06969'
-        buttonIsVisible={false} />
+        buttonIsVisible={false}
+      />
     </>
-  ), {
+  ),
+  {
     notes: `
       # TaskCard
       ## Description
@@ -85,4 +90,5 @@ storiesOf('Fancy', module)
           * Should trigger the onEventTrigger("TaskCardButtonClick") plugin hook when the
           button in the task card is clicked
     `
-  });
+  }
+);

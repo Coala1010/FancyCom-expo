@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import LaunchIcon from '@material-ui/icons/Launch';
+import React, { useState } from 'react';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import './style.css';
@@ -39,7 +39,6 @@ export const SlugField: React.FC<SlugFieldProps> = ({
 
   const onLinkCopyButton = () => {
     const urlValue = 'http://' + domainPrefixText + '/' + slugText;
-    // Clipboard.setString(urlValue);
     document.execCommand('copy');
     alert('Copied the url ' + urlValue);
   };
@@ -51,7 +50,7 @@ export const SlugField: React.FC<SlugFieldProps> = ({
 
   const _onSelect = (option: any) => {
     setDomainPrefixText(option.label);
-  }
+  };
 
   return (
     <div className='screen'>
@@ -76,10 +75,8 @@ export const SlugField: React.FC<SlugFieldProps> = ({
           type='text'
           className='slugTextSection'
           value={slugText}
-          onChange={(
-            ev: React.ChangeEvent<HTMLInputElement>,
-          ): void => {
-            setSlugText(ev.target.value)
+          onChange={(ev: React.ChangeEvent<HTMLInputElement>): void => {
+            setSlugText(ev.target.value);
           }}
         />
         <div className='buttonsSection'>
