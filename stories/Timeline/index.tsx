@@ -32,7 +32,7 @@ export const Timeline: React.FC<TimelineProps> = ({
       <>
         {data &&
           data.map((item, index) => (
-            <div key={index} className='container'>
+            <div key={index} className='scheduleItemContainer'>
               <div className='barSection'>
                 <div className='iconCircle' style={{ backgroundColor: barColor }}>
                   {item.icon}

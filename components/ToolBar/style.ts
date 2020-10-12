@@ -4,25 +4,25 @@ export default StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: 'white',
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 10,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 10
   },
   scrollViewWrapper: {
     borderBottomWidth: 2,
     borderBottomColor: '#E7EEF2',
     borderTopWidth: 2,
     borderTopColor: '#E7EEF2',
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   container: {
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 10,
+    paddingHorizontal: 10
   },
   leftItemsSection: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   logoImg: {
     width: 120,
@@ -31,19 +31,19 @@ export default StyleSheet.create({
   },
   toolbarTitleText: {
     color: '#607380',
-    paddingHorizontal: 15,
+    paddingHorizontal: 15
   },
   rightItemsSection: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   publishBtn: {
     backgroundColor: '#F35564',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 20,
-    marginHorizontal: 5,
+    marginHorizontal: 5
   },
   publishBtnText: {
     color: 'white'
@@ -51,30 +51,30 @@ export default StyleSheet.create({
   userAvatarPart: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   userAvatarImg: {
     width: 40,
     height: 40,
-    marginHorizontal: 5,
+    marginHorizontal: 5
   },
   rightItemElement: {
-    marginHorizontal: 5,
+    marginHorizontal: 5
   },
   centeredView: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: 22,
-    marginHorizontal: 30,
+    marginHorizontal: 30
   },
   modalView: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
+    alignItems: 'center',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2
@@ -82,25 +82,25 @@ export default StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    width: '100%',
+    width: '100%'
   },
   closeButton: {
-    backgroundColor: "#2196F3",
+    backgroundColor: '#2196F3',
     borderRadius: 20,
     padding: 10,
     elevation: 2,
     width: '100%',
-    marginTop: 15,
+    marginTop: 15
   },
   textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   modalTitle: {
     marginBottom: 15,
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   modalEdiTitleInput: {
     width: '100%',
@@ -108,6 +108,6 @@ export default StyleSheet.create({
     borderColor: 'grey',
     borderWidth: 1,
     paddingHorizontal: 10,
-    borderRadius: 10,
-  },
+    borderRadius: 10
+  }
 });
