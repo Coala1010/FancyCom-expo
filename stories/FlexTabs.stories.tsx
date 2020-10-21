@@ -24,8 +24,8 @@ Primary.args = {
   enableTabDropdowns: true,
   tabActions: [
     { label: 'Rename', onSelect: () => console.log('onSelect clicked') },
-    { label: 'Duplicate', onSelect: () => console.log('onSelect clicked') },
-    { label: 'Delete', onSelect: () => console.log('onSelect clicked') }
+    { label: 'Duplicate', onSelect: () => console.log('onDuplicate clicked') },
+    { label: 'Delete', onSelect: () => console.log('onDelete clicked') }
   ],
   canRename: true,
   canAdd: true,

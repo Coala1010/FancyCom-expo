@@ -3,7 +3,8 @@ import LaunchIcon from '@material-ui/icons/Launch';
 import React, { useState } from 'react';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import './style.css';
+import { makeStyles } from '@material-ui/core/styles';
+// import './style.css';
 
 interface domainPrefixProps {
   key: string;
@@ -34,6 +35,7 @@ export const SlugField: React.FC<SlugFieldProps> = ({
   placeholder,
   label
 }) => {
+  const styles: any = useStyles();
   const [slugText, setSlugText] = useState(value);
   const [domainPrefixText, setDomainPrefixText] = useState(domainPrefix);
 
@@ -53,40 +55,40 @@ export const SlugField: React.FC<SlugFieldProps> = ({
   };
 
   return (
-    <div className='screen'>
-      <div className='container'>
-        <div className='domainHeaderSection'>
-          <p className='domainPrefixColor'>https://</p>
+    <div className={styles.screen}>
+      <div className={styles.container}>
+        <div className={styles.domainHeaderSection}>
+          <p className={styles.domainPrefixColor}>https://</p>
         </div>
-        <div className='domainPrefixSection'>
+        <div className={styles.domainPrefixSection}>
           <Dropdown
-            className='dropdownSection'
-            controlClassName='dropdownControlSection'
+            className={styles.dropdownSection}
+            controlClassName={styles.dropdownControlSection}
             options={domainPrefixItems}
             onChange={_onSelect}
             value={domainPrefixItems[0]}
             placeholder='Select an option'
           />
         </div>
-        <div className='slashSection'>
-          <p className='domainPrefixColor'>/</p>
+        <div className={styles.slashSection}>
+          <p className={styles.domainPrefixColor}>/</p>
         </div>
         <input
           type='text'
-          className='slugTextSection'
+          className={styles.slugTextSection}
           value={slugText}
           onChange={(ev: React.ChangeEvent<HTMLInputElement>): void => {
             setSlugText(ev.target.value);
           }}
         />
-        <div className='buttonsSection'>
+        <div className={styles.buttonsSection}>
           {showCopyButton && (
-            <div className='actionButton' onClick={onLinkCopyButton}>
+            <div className={styles.actionButton} onClick={onLinkCopyButton}>
               <FileCopyIcon style={{ color: 'grey', fontSize: 25 }} />
             </div>
           )}
           {showLinkIcon && (
-            <div className='actionButton' onClick={onLinkLaunchButton}>
+            <div className={styles.actionButton} onClick={onLinkLaunchButton}>
               <LaunchIcon style={{ color: 'grey', fontSize: 25 }} />
             </div>
           )}
@@ -100,3 +102,78 @@ SlugField.defaultProps = {
   showCopyButton: true,
   showLinkIcon: true
 };
+
+const useStyles = makeStyles(() => ({
+  screen: {
+    flex: 1,
+    backgroundColor: 'white',
+    padding: '10px',
+  },
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  domainHeaderSection: {
+    backgroundColor: 'grey',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    paddingLeft: '10px',
+    paddingRight: '10px',
+    height: '40px',
+    borderTopLeftRadius: '7px',
+    borderBottomLeftRadius: '7px',
+  },
+  domainPrefixColor: {
+    color: 'white',
+  },
+  domainPrefixSection: {
+    flex: 1,
+    backgroundColor: 'grey',
+    height: '100%',
+    flexWrap: 'wrap',
+  },
+  dropdownSection: {
+    backgroundColor: 'grey',
+    borderWidth: '1px',
+    borderColor: 'grey',
+    borderStyle: 'solid',
+  },
+  dropdownControlSection: {
+    backgroundColor: 'grey',
+    borderWidth: '1px',
+    borderColor: 'grey',
+    borderStyle: 'solid',
+    color: 'white',
+    height: '38px',
+  },
+  slashSection: {
+    backgroundColor: 'grey',
+    paddingLeft: '5px',
+    paddingRight: '5px',
+    height: '40px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  slugTextSection: {
+    display: 'flex',
+    flex: 1,
+    color: 'white',
+    backgroundColor: 'grey',
+    height: '34px',
+    paddingLeft: '5px',
+    paddingRight: '5px',
+    borderTopRightRadius: '7px',
+    borderBottomRightRadius: '7px',
+    borderColor: 'grey',
+    borderStyle: 'solid',
+  },
+  buttonsSection: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  }
+}));

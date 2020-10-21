@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
-import './style.css';
+import { makeStyles } from '@material-ui/core/styles';
+// import './style.css';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -49,24 +50,27 @@ export const FlexTabs: React.FC<FlexTabsProps> = ({
   tabComponent,
   vertical
 }) => {
+  const styles: any = useStyles();
   const [tabsData, setTabsData] = useState(tabs);
   const [nSelItem, setNSelItem] = useState(tabs[0]);
   const [modalVisible, setModalVisible] = useState(false);
   const [editModalVisible, setEditModalVisible] = useState(false);
   const [tabTitle, setTabTitle] = useState('');
   const [bEditOrAdd, setEditOrAdd] = useState(false);
+  // console.log('enableTabDropdowns', enableTabDropdowns);
+  // console.log('canRename', canRename);
+  // console.log('canAdd', canAdd);
 
   const SortableItem = SortableElement(({ item }: { item: TabProps }) => (
     <div
       onClick={() => setNSelItem(item)}
-      className='tabBtn'
+      className={styles.tabBtn}
+      id={nSelItem.id === item.id ? 'isActive' : 'notActive'}
       style={{ borderBottomColor: nSelItem.id === item.id ? '#008DD8' : 'white' }}>
       <p
-        style={{
-          color: nSelItem.id === item.id ? '#008DD8' : '#607380',
-          marginTop: 2,
-          marginBottom: 2
-        }}>
+        className={styles.tabTitle}
+        id={item.name}
+        style={{ color: nSelItem.id === item.id ? '#008DD8' : '#607380' }}>
         {item.name}
       </p>
       {enableTabDropdowns && (
@@ -88,7 +92,7 @@ export const FlexTabs: React.FC<FlexTabsProps> = ({
     return (
       <div style={{ display: 'flex' }}>
         {items.map((value, index) => (
-          <SortableItem key={`item-${value}`} index={index} item={value} />
+          <SortableItem key={`value-${index}`} index={index} item={value} />
         ))}
       </div>
     );
@@ -108,13 +112,13 @@ export const FlexTabs: React.FC<FlexTabsProps> = ({
   const renderContextModal = (
     <Dialog open={modalVisible}>
       <DialogContent>
-        <div className='centeredView'>
-          <div className='modalView'>
+        <div className={styles.centeredView}>
+          <div className={styles.modalView}>
             {tabActions &&
               tabActions.map((item, index) => (
                 <div
                   key={index.toString()}
-                  className='openButton'
+                  className={styles.openButton}
                   onClick={() => {
                     setModalVisible(!modalVisible);
                     if (item.label === 'Rename') {
@@ -142,7 +146,7 @@ export const FlexTabs: React.FC<FlexTabsProps> = ({
                       }
                     }
                   }}>
-                  <p className='textStyle'>{item.label}</p>
+                  <p className={styles.textStyle}>{item.label}</p>
                 </div>
               ))}
           </div>
@@ -158,8 +162,8 @@ export const FlexTabs: React.FC<FlexTabsProps> = ({
   const renderEditTabTitle = (
     <Dialog open={editModalVisible}>
       <DialogTitle id='alert-dialog-title'>Tab Title</DialogTitle>
-      <div className='centeredView'>
-        <div className='modalView'>
+      <div className={styles.centeredView}>
+        <div className={styles.modalView}>
           <textarea
             style={{
               width: '100%',
@@ -173,7 +177,7 @@ export const FlexTabs: React.FC<FlexTabsProps> = ({
             placeholder='Tab Title'
           />
           <div
-            className='openButton'
+            className={styles.openButton}
             onClick={() => {
               const tmpTabsData = tabsData;
               if (tabTitle !== '') {
@@ -192,7 +196,7 @@ export const FlexTabs: React.FC<FlexTabsProps> = ({
               setTabsData(tmpTabsData);
               setEditModalVisible(!editModalVisible);
             }}>
-            <p className='textStyle'>OK</p>
+            <p className={styles.textStyle}>OK</p>
           </div>
         </div>
       </div>
@@ -206,7 +210,7 @@ export const FlexTabs: React.FC<FlexTabsProps> = ({
           <div
             key={index.toString()}
             onClick={() => setNSelItem(item)}
-            className='tabBtn'
+            className={styles.tabBtn}
             style={{ borderBottomColor: nSelItem.id === item.id ? '#008DD8' : 'white' }}>
             <p
               style={{
@@ -237,8 +241,8 @@ export const FlexTabs: React.FC<FlexTabsProps> = ({
   };
 
   return (
-    <div className='screen'>
-      <div className='flexTabContainer'>
+    <div className={styles.screen}>
+      <div className={styles.flexTabContainer}>
         <div
           style={{
             alignItems: 'center',
@@ -307,3 +311,70 @@ FlexTabs.defaultProps = {
   componentWrapper: MyComponentWrapper,
   tabComponent: MyTabComponent
 };
+
+const useStyles = makeStyles(() => ({
+  screen: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  flexTabContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: '0px',
+    borderBottomColor: 'grey',
+    borderBottomWidth: '1px',
+    borderTopColor: 'grey',
+    borderTopWidth: '1px',
+    marginTop: '5px',
+    marginBottom: '5px',
+    borderStyle: 'solid',
+    width: '100%',
+  },
+  tabBtn: {
+    display: 'flex',
+    paddingLeft: '10px',
+    paddingRight: '10px',
+    marginLeft: '10px',
+    marginRight: '10px',
+    borderWidth: '0px',
+    borderBottomWidth: '2px',
+    borderStyle: 'solid',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  tabTitle: {
+    marginTop: '2px',
+    marginBottom: '2px',
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    minWidth: '300px',
+  },
+  modalView: {
+    backgroundColor: 'white',
+    borderRadius: '20px',
+    padding: '35px',
+    alignItems: 'center',
+  },
+  openButton: {
+    backgroundColor: '#2196F3',
+    borderRadius: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
+    paddingTop: '2px',
+    paddingBottom: '2px',
+    marginTop: '15px',
+    marginBottom: '15px',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: '10px',
+    marginBottom: '10px',
+  },
+}));
